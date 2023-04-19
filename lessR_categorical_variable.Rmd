@@ -1,0 +1,21 @@
+#### 
+
+```{r}
+library(lessR)
+d= Read("Employee")
+```
+
+#### 명목변수+수치변수(기술통계를 적용) - 0을 기준으로 음/양 색상 적용
+
+```{r}
+BarChart(Dept, Salary,stat = "dev", sort="+", fill_split = 0, values="input")
+```
+
+#### 명목변수+수치변수(기술통계를 적용) - 명목변수를 순서형 factor로 지정
+
+-   명목변수의 순서는 level 순서대로 나타난다.
+
+```{r}
+d= factors(JobSat, levels = c("low", "med", "high"))
+BarChart(JobSat, Salary, stat = "median", values = "input")
+```
