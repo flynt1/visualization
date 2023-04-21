@@ -1,0 +1,46 @@
+### 연속형 변수
+```{r}
+library(lessR)
+d= Read("Employee")
+```
+#### 연속형 변수 : 단일 연속형 변수
+- 1) 히스토그램 : bin을 설정하고 빈에 속하는 빈도수를 구해서 빈도수를 막대 크기로 나타낸다.
+- 히스토그램 / 누적 히스토그램 / 도수 다각형
+```{r}
+Histogram(Salary, bin_width = 10000)
+```
+
+```{r}
+Histogram(Salary, cumulate = "both") #on-누적히스토그램, both-둘다 그린다.
+```
+```{r}
+Plot(Salary, stat="count") #도수 다각형(frequency polygon)
+```
+- 2) 밀도 플롯 : 연속형 변수의 확률 밀도 함수를 그린다.
+- 밀도 플롯/ 중첩 밀도 플롯(명목변수별 밀도 플롯)/ 러그 플롯(축을 따라 러그를 표시한다)
+```{r}
+Histogram(Salary, density = T, type="both", rug=T) #밀도곡선과 정규밀도 곡선을 함께 그린다.
+```
+```{r}
+ttest(Salary~Gender) #명목변수별 밀도곡선을 중첩해서 비교한다. 통계분석과 시각화를 함께 구현한다.
+```
+- 3) 바이올린플롯/ 박스플롯/ 산점도 - VBS 플롯
+- Facets
+```{r}
+Plot(Salary)
+```
+
+```{r}
+Plot(Salary, by1=Gender)
+```
+
+
+
+
+
+
+
+
+
+
+

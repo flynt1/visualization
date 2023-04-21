@@ -21,6 +21,17 @@ Plot(Dept)
 ```{r}
 Plot(Dept, stat = "proportion")
 ```
+- 3) 파레토 챠트
+- 명목형 변수의 발생빈도를 통해서, 어떤 결과를 초래하는데 가장 영향력 있는 인자를 시각화 한다.
+- 발생빈도의 누적그래프를 같이 보여준다.
+```{r}
+df= Read("http://lessRstats.com/data/Pareto.csv")
+reason= table(df$Reason)
+qcc::pareto.chart(reason, main="Customer Returns", col="orange")
+```
+
+
+
 
 #### 명목변수 : 동일한 수준(Level)을 갖는 여러 명목변수
 - 1) Barchat : 변수별로 level의 크기를 막대의 높이로 비교한다.
