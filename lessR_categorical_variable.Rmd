@@ -1,8 +1,63 @@
-#### 
+### 명목변수의 그래프
 
 ```{r}
 library(lessR)
 d= Read("Employee")
+```
+#### 명목변수 : 1개 
+- 1) Barchart 기본 : 빈도수를 세서 빈도수 혹은 비율을 막대의 높이로 표현한다.
+
+```{r}
+BarChart(Dept, horiz = T, stat="count") #stat="proportion"
+```
+#### 명목변수 : 1개
+- 2) 버븝챠트 : 빈도수를 세서 빈도수을 원의 크기로 표현한다.
+- 3) 클리브랜드 점도표 : 빈도수를 세서 빈도수 혹은 비율을 점과 선으로 표현한다. (stat=)
+
+```{r}
+Plot(Dept)
+```
+
+```{r}
+Plot(Dept, stat = "proportion")
+```
+
+#### 명목변수 : 동일한 수준(Level)을 갖는 여러 명목변수
+- 1) Barchat : 변수별로 level의 크기를 막대의 높이로 비교한다.
+- 2) 버블챠트 : 변수별로 level의 크기를 원의 크기로 비교한다.
+- 수치변수이면 factor형으로 변환해야 한다.
+
+```{r}
+dd= Read("http://lessRstats.com/data/Mach4.csv")
+dd= factors(m01:m20, levels= 0:5, data=dd)
+```
+
+```{r}
+BarChart(c(m01,m02,m03,m04,m05), horiz = T, data=dd)
+```
+```{r}
+Plot(c(m01,m02,m03,m04,m05), data=dd)
+```
+
+#### 명목변수 + 수치변수 : - 명목변수가 가지는 수치변수의 수치값을 그대로 그래프로 표현
+- 1) Barchart : 명목변수별로 수치변수의 크기를 막대크기로 표현한다.
+- 2) 클리브랜드 점도표 : 위와 동일
+```{r}
+BarChart(row_names, Salary, horiz = T, sort = "+", data=d[1:7,])
+```
+
+```{r}
+df= d[1:7,]
+Plot(data=df,x=Pre, y=row_names, origin_x = 0, sort="-")
+```
+#### 명목변수+수치변수 : 수치변수에 기술통계를 적용한다.
+- 1) Barchart : 수치변수에 기술통계를 적용
+- 2) Plot : 클리브랜드 점도표 
+```{r}
+BarChart(Dept, Salary, stat="mean", sort="+", values = "input")
+```
+```{r}
+Plot(Dept, Salary, stat="median", sort="+")
 ```
 
 #### 명목변수+수치변수(기술통계를 적용) - 0을 기준으로 음/양 색상 적용
@@ -19,3 +74,6 @@ BarChart(Dept, Salary,stat = "dev", sort="+", fill_split = 0, values="input")
 d= factors(JobSat, levels = c("low", "med", "high"))
 BarChart(JobSat, Salary, stat = "median", values = "input")
 ```
+
+
+
