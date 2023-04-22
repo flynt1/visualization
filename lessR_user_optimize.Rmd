@@ -1,0 +1,64 @@
+```{r}
+library(lessR)
+```
+
+```{r}
+d= Read("http://lessRstats.com/data/employee.csv")
+```
+#### 1. 주석달기
+- 1) 레이블 달기
+```{r}
+df= d[1:10,]
+Plot(Years, Salary, add = "labels",  ID="Name", data=df) #ID에 레이블로 지정할 열이름 선택
+```
+- 2) 임의 문자 기입하기
+```{r}
+style(add_cex = 1.5, add_color = "blue")
+Plot(Years, Salary, add="top earner", x1=20, y1=105000)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
