@@ -33,6 +33,30 @@ Plot(Salary)
 ```{r}
 Plot(Salary, by1=Gender)
 ```
+#### 연속형 변수 : 2개 연속형 변수의 시각화 - 산점도가 기분
+- 95% 신뢰구간을 나타내는 타원 표기
+- 최소 제곱선 및 신뢰구간 표기
+```{r}
+Plot(Years, Salary, ellipse = c(0.68, 0.95))
+```
+```{r}
+Plot(Years, Salary, fit="lm", fit_se = c(0.68,0.95))
+```
+- 이상치 탐지 : 마하라노비스 거리를 측정, out_cut=10% 가장큰 거리값을 갖는 10%를 표기한다. 
+- 95% 신뢰구간을 벗어난 점 표기
+- 이상치가 제거된 회귀선 표기(점선)
+```{r}
+Plot(Years, Salary, ellipse = 0.95, enhance = T)
+```
+- 
+```{r}
+
+```
+
+
+
+
+
 
 
 
