@@ -1,0 +1,70 @@
+```{r}
+library(tidyverse)
+library(lessR)
+d= Read("http://lessRstats.com/data/Cereal.xlsx")
+```
+- line 그래프 출력한다.
+```{r}
+Plot(Weight, run=T, segments =T)
+```
+- 관리도를 출력한다.
+```{r}
+qcc::qcc(d$Weight, type= "xbar.one")
+```
+- 시계열 그래프 그리기 : 채워진 영역 시계열
+```{r}
+d= Read("http://lessRstats.com/data/PPStechLong.xlsx")
+x= as.Date("2007-06-01")
+```
+```{r}
+Plot(date,Price, rows = (Company=="Apple"), fill = "on",
+     add=c("iphone","arrow"), x1=c(x,x), y1=c(100,90), x2=x, y2=30)
+```
+- 누적 다중 시계열
+```{r}
+d=factors(Company, levels = c("Intel","Apple","IBM"))
+Plot(date, Price, by=Company, transparency = 0.2)
+```
+```{r}
+Plot(date, Price, by1=Company, fill="on")
+```
+- 넓은 테이브을 긴 테이블로 변환하기
+```{r}
+d= Read("http://lessRstats.com/data/PPStechWide.xlsx")
+d
+```
+- 넚은 테이블 시각화
+```{r}
+Plot(date, c(Intel,Apple,IBM))
+```
+
+```{r}
+pivot_longer(d, -date, names_to = "Company", values_to = "Price")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

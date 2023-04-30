@@ -2,6 +2,7 @@
 
 ```{r}
 library(lessR)
+library(tidyverse)
 d= Read("Employee")
 ```
 #### 명목변수 : 1개 
@@ -85,6 +86,34 @@ BarChart(Dept, Salary,stat = "dev", sort="+", fill_split = 0, values="input")
 d= factors(JobSat, levels = c("low", "med", "high"))
 BarChart(JobSat, Salary, stat = "median", values = "input")
 ```
+- 2개 범주 + 1개 연속형 변수의 경우
+```{r}
+BarChart(JobSat, Salary, by=Gender, stat="mean", beside = T)
+```
 
+
+
+- 두 범주형 변수의 시각화
+- 1개의 범주형 변수를 2번째 범주형 변수별로 카운트한다.
+```{r}
+BarChart(Dept, by=Gender)
+```
+```{r}
+BarChart(Dept, by=Gender, beside=T)
+```
+```{r}
+BarChart(Dept, by1=Gender)
+```
+```{r}
+BarChart(Dept, by=Gender, sort = "+", horiz = T, legend_position = "top")
+```
+```{r}
+BarChart(Dept, by=Gender, stack100 = T)
+```
+- 대응표본 t-test : 동일 그룹의 교육전후의 Pre와 Post비교 - 교육의 효과가 있는가?
+- 귀무가설 : 모집단의 평균의 차이가 0이다 (교육전후 차이가 없다)
+```{r}
+ttest(Pre,Post, paired = T)
+```
 
 

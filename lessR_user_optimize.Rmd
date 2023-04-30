@@ -16,7 +16,31 @@ Plot(Years, Salary, add = "labels",  ID="Name", data=df) #ID에 레이블로 지
 style(add_cex = 1.5, add_color = "blue")
 Plot(Years, Salary, add="top earner", x1=20, y1=105000)
 ```
+```{r}
+showColors()
+```
 
+```{r}
+showPalettes("viridis", n=7)
+```
+```{r}
+style(show = T)
+```
+
+
+- 여백 지정
+```{r}
+df= d[1:10,]
+Plot(Years, Salary, add = "labels",  ID="Name", data=df, 
+     margin_adj = c(0,0,0,0), #(top,right,bottom,left)
+     lab_adj = c(0,0)) #(x-axis, y-axis)
+```
+- 테마 변경 : 원복하기
+```{r}
+style(panel_fill = "slategray1", axis_text_color = "darked")
+Plot(Years, Salary, add = "labels",  ID="Name", data=df, margin_adj = c(0,0,0,0.1)) 
+style()
+```
 
 
 

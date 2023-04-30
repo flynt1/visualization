@@ -1,6 +1,7 @@
 ### 연속형 변수
 ```{r}
 library(lessR)
+library(tidyverse)
 d= Read("Employee")
 ```
 #### 연속형 변수 : 단일 연속형 변수
@@ -48,9 +49,39 @@ Plot(Years, Salary, fit="lm", fit_se = c(0.68,0.95))
 ```{r}
 Plot(Years, Salary, ellipse = 0.95, enhance = T)
 ```
-- 
+- 3번째 변수의 매핑 : 두 연속변수가 제3의 변수(범주형)의 수준에 따라지는 정도를 보여준다.
 ```{r}
+Plot(Years, Salary, by=Gender, fit="lm", fill=getColors(n=2, "blue","red"))
+```
+- 트렐리스 산점도 : by1 매개변수를 통해서 패널을 달리 그린다.(범주형 매핑)
+```{r}
+Plot(Years, Salary, by1=Gender, by=JobSat, n_row=1, fill=c("blue","red","green"))
+```
+- size 매개변수에 제3의 수치변수를 매핑할 수 있다.(연속형 매칭)
+```{r}
+Plot(Years, Salary, size = Pre, power=3)
+```
+- 동일 패널에 다중변수 시각화 : 여러 수치변수를 모을 필요가 없다.
+```{r}
+Plot(c(Pre,Post), Salary, fit="lm")
+```
+- 변수간의 상호 관계 파악하기
+```{r}
+Plot(c(Years, Salary, Pre), fit="lm")
+```
+- 대용량의 데이터의 산점도
+```{r}
+x= rnorm(5000)
+y= rnorm(5000)
 
+Plot(x,y)
+ggplot(tibble(x,y), aes(x,y))+
+  geom_bin2d()+
+  #scale_fill_gradientn(colors= c("gray80","gray20"))+
+  coord_fixed(ratio = 1)
+```
+```{r}
+tibble(x,y)
 ```
 
 
